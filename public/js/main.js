@@ -174,6 +174,7 @@
       btn.style.opacity = '0.7';
 
       var formData = new FormData(form);
+      formData.append('form-name', form.getAttribute('name'));
       var payload = new URLSearchParams(formData).toString();
 
       fetch('/', {
@@ -233,6 +234,7 @@
         btn.disabled = true;
 
         var formData = new FormData(form);
+        formData.append('form-name', form.getAttribute('name'));
         var payload = new URLSearchParams(formData).toString();
 
         fetch('/', {
