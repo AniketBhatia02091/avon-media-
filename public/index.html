@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Studio — Crafting Digital Excellence</title>
+    <meta name="description"
+        content="Apex Studio is a modern digital agency specializing in branding, web development, advertising, and social media strategy. Transform your brand's potential into measurable results.">
+    <meta property="og:title" content="Apex Studio — Crafting Digital Excellence">
+    <meta property="og:description"
+        content="A modern digital agency specializing in branding, web development, advertising, and social media strategy.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="preloader-content">
+            <span class="preloader-logo">Apex<span>.</span></span>
+            <div class="preloader-bar"></div>
+        </div>
+    </div>
+    <script>
+        // Preloader Logic:
+        // 1. If Reload (Refresh): Clear session to force preloader to show.
+        // 2. If Internal Navigation (Home Click): Hide preloader if already visited.
+        (function () {
+            var isReload = false;
+            try {
+                if (window.performance) {
+                    var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+                    if (nav && nav.type === 'reload') isReload = true;
+                    // Fallback for older browsers
+                    else if (performance.navigation && performance.navigation.type === 1) isReload = true;
+                }
+            } catch (e) { }
+
+            if (isReload) {
+                // User manually refreshed: Clear session so they see the preloader again
+                sessionStorage.removeItem('apex_visited');
+            } else if (sessionStorage.getItem('apex_visited')) {
+                // Internal navigation: Hide preloader immediately
+                var p = document.getElementById('preloader');
+                if (p) p.style.display = 'none';
+            }
+        })();
+    </script>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container header__inner">
+            <a href="index.html" class="logo" aria-label="Apex Studio Home">Apex<span>.</span></a>
+            <nav aria-label="Main navigation">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link nav__link--active">Home</a></li>
+                    <li><a href="services.html" class="nav__link">Services</a></li>
+                    <li><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <a href="index.html" class="mobile-menu__link">Home</a>
+        <a href="services.html" class="mobile-menu__link">Services</a>
+        <a href="contact.html" class="mobile-menu__link">Contact</a>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main">
+
+        <!-- Hero -->
+        <section class="hero" aria-label="Introduction">
+            <div class="hero__bg" aria-hidden="true">
+                <div class="hero__gradient-1"></div>
+                <div class="hero__gradient-2"></div>
+            </div>
+            <div class="container">
+                <div class="hero__content">
+                    <div class="hero__badge reveal">
+                        <span class="hero__badge-dot" aria-hidden="true"></span>
+                        Currently accepting new projects
+                    </div>
+                    <h1 class="hero__title reveal reveal--delay-1">
+                        We build <span class="highlight">digital products</span> that drive real growth
+                    </h1>
+                    <p class="hero__subtitle reveal reveal--delay-2">
+                        From compelling brand identities to high-performance websites and data-driven marketing
+                        campaigns — we transform ambitious ideas into measurable results.
+                    </p>
+                    <div class="hero__actions reveal reveal--delay-3">
+                        <a href="contact.html" class="btn btn--primary">
+                            Start a project
+                            <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </a>
+                        <a href="services.html" class="btn btn--outline">Explore services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="section" aria-label="About us">
+            <div class="container">
+                <div class="about__grid">
+                    <div class="about__visual reveal">
+                        <img src="img/about-visual.png" alt="Abstract representation of digital strategy and creativity"
+                            class="about__image">
+                    </div>
+                    <div>
+                        <div class="section-header">
+                            <span class="section-header__label reveal">Who we are</span>
+                            <h2 class="section-header__title reveal reveal--delay-1">A studio built on strategy,
+                                creativity, and results</h2>
+                            <p class="section-header__desc reveal reveal--delay-2">
+                                Founded with a belief that great design and smart strategy should be accessible to every
+                                ambitious business. We partner with startups and established brands to craft digital
+                                experiences that connect, convert, and scale.
+                            </p>
+                        </div>
+                        <p class="reveal reveal--delay-3 mb-lg">
+                            Our multidisciplinary team blends design thinking with technical expertise to deliver
+                            solutions that look stunning and perform exceptionally. We don't just create — we measure,
+                            iterate, and optimize until the results speak for themselves.
+                        </p>
+                        <a href="services.html" class="btn btn--ghost reveal reveal--delay-4">
+                            See what we offer
+                            <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="section section--dark" aria-label="Our services">
+            <div class="container">
+                <div class="section-header text-center section-header--centered">
+                    <span class="section-header__label reveal">What we do</span>
+                    <h2 class="section-header__title reveal reveal--delay-1">Services designed to accelerate your growth
+                    </h2>
+                    <p class="section-header__desc reveal reveal--delay-2 mx-auto">End-to-end digital
+                        solutions tailored to your unique goals and challenges.</p>
+                </div>
+                <div class="grid grid--4">
+                    <!-- Card 1: Branding -->
+                    <div class="card reveal">
+                        <div class="card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5" />
+                                <path d="M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <h4 class="card__title">Brand Identity</h4>
+                        <p class="card__desc">Cohesive visual systems and brand strategies that make your business
+                            instantly recognizable and deeply memorable.</p>
+                        <div class="card__tags">
+                            <span class="tag">Logo Design</span>
+                            <span class="tag">Visual Identity</span>
+                            <span class="tag">Brand Strategy</span>
+                        </div>
+                    </div>
+                    <!-- Card 2: Web Development -->
+                    <div class="card reveal reveal--delay-1">
+                        <div class="card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" />
+                                <path d="M8 21h8" />
+                                <path d="M12 17v4" />
+                            </svg>
+                        </div>
+                        <h4 class="card__title">Web Development</h4>
+                        <p class="card__desc">Responsive, lightning-fast websites engineered for performance,
+                            accessibility, and seamless user experiences.</p>
+                        <div class="card__tags">
+                            <span class="tag">Custom Sites</span>
+                            <span class="tag">E-Commerce</span>
+                            <span class="tag">Web Apps</span>
+                        </div>
+                    </div>
+                    <!-- Card 3: Advertising -->
+                    <div class="card reveal reveal--delay-2">
+                        <div class="card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                            </svg>
+                        </div>
+                        <h4 class="card__title">Digital Advertising</h4>
+                        <p class="card__desc">Data-driven campaigns on Meta and Google platforms that maximize your
+                            return on every marketing dollar spent.</p>
+                        <div class="card__tags">
+                            <span class="tag">Meta Ads</span>
+                            <span class="tag">Google Ads</span>
+                            <span class="tag">Analytics</span>
+                        </div>
+                    </div>
+                    <!-- Card 4: Social Media -->
+                    <div class="card reveal reveal--delay-3">
+                        <div class="card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 2h4v4" />
+                                <path d="M3 22l18-18" />
+                                <path d="M15 18v4h4" />
+                                <path d="M21 14l-8 8" />
+                                <path d="M3 8V4h4" />
+                                <path d="M9 2L3 8" />
+                            </svg>
+                        </div>
+                        <h4 class="card__title">Social Strategy</h4>
+                        <p class="card__desc">Strategic content planning and community management that builds genuine
+                            engagement and lasting audience loyalty.</p>
+                        <div class="card__tags">
+                            <span class="tag">Content</span>
+                            <span class="tag">Community</span>
+                            <span class="tag">Growth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="section" aria-label="Our impact in numbers">
+            <div class="container">
+                <div class="section-header text-center section-header--centered">
+                    <span class="section-header__label reveal">Our impact</span>
+                    <h2 class="section-header__title reveal reveal--delay-1">Numbers that reflect our commitment</h2>
+                </div>
+                <div class="stats">
+                    <div class="stat reveal">
+                        <div class="stat__number">50+</div>
+                        <div class="stat__label">Projects Delivered</div>
+                    </div>
+                    <div class="stat reveal reveal--delay-1">
+                        <div class="stat__number">30+</div>
+                        <div class="stat__label">Happy Clients</div>
+                    </div>
+                    <div class="stat reveal reveal--delay-2">
+                        <div class="stat__number">3+</div>
+                        <div class="stat__label">Years of Experience</div>
+                    </div>
+                    <div class="stat reveal reveal--delay-3">
+                        <div class="stat__number">95%</div>
+                        <div class="stat__label">Client Retention</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section class="section section--dark" aria-label="Our team">
+            <div class="container">
+                <div class="section-header text-center section-header--centered">
+                    <span class="section-header__label reveal">The team</span>
+                    <h2 class="section-header__title reveal reveal--delay-1">Passionate people behind every pixel</h2>
+                    <p class="section-header__desc reveal reveal--delay-2 mx-auto">A lean, talented crew
+                        that brings diverse skills under one roof to deliver exceptional work.</p>
+                </div>
+                <div class="grid grid--3">
+                    <div class="team-card reveal">
+                        <img src="img/Ajeet Pratap Singh.jpeg" alt="Ajeet Pratap Singh" class="team-card__avatar">
+                        <h4 class="team-card__name">Ajeet Pratap Singh</h4>
+                        <p class="team-card__role">Founder & Creative Director</p>
+                        <p class="team-card__bio">Drives the creative vision and ensures every project aligns with
+                            client goals and market trends.</p>
+                    </div>
+                    <div class="team-card reveal reveal--delay-1">
+                        <img src="img/Shagun Som.jpeg" alt="Shagun Som" class="team-card__avatar">
+                        <h4 class="team-card__name">Shagun Som</h4>
+                        <p class="team-card__role">Marketing Strategist</p>
+                        <p class="team-card__bio">Designs data-backed campaigns that connect with the right audience at
+                            the right time.</p>
+                    </div>
+                    <div class="team-card reveal reveal--delay-2">
+                        <img src="img/aniket.jpg" alt="Aniket Bhatia" class="team-card__avatar"
+                            style="object-position: bottom;">
+                        <h4 class="team-card__name">Aniket Bhatia</h4>
+                        <p class="team-card__role">Lead Developer</p>
+                        <p class="team-card__bio">Turns designs into performant, accessible digital experiences with
+                            clean, maintainable code.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section" aria-label="Call to action">
+            <div class="container">
+                <div class="cta-banner reveal">
+                    <h2 class="cta-banner__title">Ready to elevate your digital presence?</h2>
+                    <p class="cta-banner__desc">Let's discuss your project and find the perfect strategy to help your
+                        brand grow. No pressure, just a conversation.</p>
+                    <a href="contact.html" class="btn btn--primary">
+                        Schedule a free call
+                        <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <a href="index.html" class="logo">Apex<span>.</span></a>
+                    <p class="footer__brand-desc">A modern digital studio crafting brands, websites, and marketing
+                        strategies that deliver measurable results.</p>
+                </div>
+                <div>
+                    <h5 class="footer__heading">Navigation</h5>
+                    <ul class="footer__links">
+                        <li><a href="index.html" class="footer__link">Home</a></li>
+                        <li><a href="services.html" class="footer__link">Services</a></li>
+                        <li><a href="contact.html" class="footer__link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="footer__heading">Services</h5>
+                    <ul class="footer__links">
+                        <li><a href="services.html#brand-identity" class="footer__link">Brand Identity</a></li>
+                        <li><a href="services.html#web-development" class="footer__link">Web Development</a></li>
+                        <li><a href="services.html#digital-advertising" class="footer__link">Digital Advertising</a>
+                        </li>
+                        <li><a href="services.html#social-strategy" class="footer__link">Social Strategy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="footer__heading">Stay Updated</h5>
+                    <p class="text-sm color-secondary mb-md">Get
+                        insights and tips delivered to your inbox.</p>
+                    <form class="footer__newsletter" name="newsletter" method="POST" data-netlify="true"
+                        aria-label="Newsletter signup">
+                        <label for="newsletter-email" class="skip-link">Email address</label>
+                        <input type="email" id="newsletter-email" name="email" class="footer__newsletter-input"
+                            placeholder="Your email" required>
+                        <button type="submit" class="footer__newsletter-btn">Join</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Apex Studio. All rights reserved.</p>
+                <p>Crafted in Chandigarh, India.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

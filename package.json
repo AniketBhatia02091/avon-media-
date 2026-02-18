@@ -1,0 +1,23 @@
+{
+    "name": "apex-studio",
+    "version": "1.0.0",
+    "description": "Apex Studio — A modern digital agency website",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "npx nodemon server.js"
+    },
+    "keywords": [
+        "digital-agency",
+        "portfolio",
+        "express"
+    ],
+    "author": "Apex Studio",
+    "license": "MIT",
+    "dependencies": {
+        "compression": "^1.7.4",
+        "express": "^4.21.2",
+        "helmet": "^8.0.0",
+        "inherits": "^2.0.4"
+    }
+}

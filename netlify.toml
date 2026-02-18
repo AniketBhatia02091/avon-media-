@@ -1,0 +1,19 @@
+[build]
+  publish = "public"
+
+# Clean URL rewrites for specific pages
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+# Custom 404 Page
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
