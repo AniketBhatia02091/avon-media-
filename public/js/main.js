@@ -1,5 +1,5 @@
 /* ========================================
-   Apex Studio — Main JavaScript
+   Molivor Studio — Main JavaScript
    Pure vanilla JS, no dependencies
    ======================================== */
 
@@ -332,8 +332,8 @@
   // --- Preloader ---
   function initPreloader() {
     // Always mark as visited for this session, regardless of page
-    const visited = sessionStorage.getItem('apex_visited');
-    sessionStorage.setItem('apex_visited', 'true');
+    const visited = sessionStorage.getItem('molivor_visited');
+    sessionStorage.setItem('molivor_visited', 'true');
 
     const preloader = document.getElementById('preloader');
     if (!preloader) return;
@@ -345,7 +345,7 @@
     }
 
     // Mark as visited for this session
-    sessionStorage.setItem('apex_visited', 'true');
+    sessionStorage.setItem('molivor_visited', 'true');
 
     // Minimum display time for the animation (1.5s)
     const minTime = 1500;
