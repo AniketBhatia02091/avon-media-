@@ -789,6 +789,22 @@ p {
   color: var(--text-muted);
 }
 
+.card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: var(--space-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: gap var(--duration-fast);
+}
+
+.card__cta:hover {
+  gap: 0.625rem;
+}
+
 /* --- About / Two Column --- */
 .about__grid {
   display: grid;
