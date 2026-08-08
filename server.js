@@ -36,9 +36,13 @@ app.use(express.urlencoded({ extended: true })); // Handle form submissions
 app.use(
     express.static(path.join(__dirname, 'public'), {
         maxAge: process.env.NODE_ENV === 'production' ? '1y' : '0',
-        etag: true,
+        etag: true
     })
 );
+
+app.get('/services', (req, res) => res.sendFile(path.join(__dirname, 'public', 'services.html')));
+app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'public', 'contact.html')));
+
 
 /* --- Netlify Form Simulation (Localhost Only) --- */
 app.post('/', (req, res) => {
