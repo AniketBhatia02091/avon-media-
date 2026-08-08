@@ -108,19 +108,35 @@
         <section class="hero" data-section="hero" aria-label="Introduction">
             <div class="hero__bg" aria-hidden="true"></div>
             <div class="container">
-                <div class="hero__content">
-                    <h1 class="hero__title motion-clip-wipe">Brand identity for businesses worth remembering.</h1>
-                    <p class="hero__subtitle motion-fade-up">Molivor builds the visual identity, website, and marketing engine your business needs to stand apart — then runs it while you focus on the work that matters.</p>
-                    <div class="hero__actions motion-fade-up">
-                        <a href="contact.html" class="btn btn--primary motion-scale">
-                            Let's talk
-                            <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14" />
-                                <path d="m12 5 7 7-7 7" />
-                            </svg>
-                        </a>
-                        <a href="/services" class="btn btn--outline motion-scale">Explore services</a>
+                <div class="hero__inner">
+                    <!-- Left: headline + CTA -->
+                    <div class="hero__content">
+                        <div class="hero__badge">
+                            <span class="hero__badge-dot" aria-hidden="true"></span>
+                            Accepting new projects
+                        </div>
+                        <h1 class="hero__title motion-clip-wipe">
+                            Brand identity for<br>
+                            businesses worth<br>
+                            <span class="highlight">remembering.</span>
+                        </h1>
+                        <p class="hero__subtitle motion-fade-up">Molivor builds the visual identity, website, and marketing engine your business needs to stand apart — then runs it while you focus on the work that matters.</p>
+                        <div class="hero__actions motion-fade-up">
+                            <a href="contact.html" class="btn btn--primary motion-scale">
+                                Let's talk
+                                <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg>
+                            </a>
+                            <a href="/services" class="btn btn--outline motion-scale">Explore services</a>
+                        </div>
+                    </div>
+
+                    <!-- Right: image (desktop only via CSS) -->
+                    <div class="hero__visual motion-fade-up" aria-hidden="true">
+                        <img src="img/hero-visual.jpg" alt="" class="hero__visual-img">
                     </div>
                 </div>
             </div>
@@ -136,7 +152,7 @@
                     <div>
                         <div class="section-header">
                             <span class="section-header__label motion-fade-up">Who we are</span>
-                            <h2 class="section-header__title motion-fade-up">A studio built on strategy, creativity, and results</h2>
+                            <h2 class="section-header__title motion-fade-up" style="margin-bottom: 1.5rem;">A two-person studio that doesn't outsource.</h2>
                         </div>
                         <p class="motion-fade-up mb-lg">
                             We're a two-person studio based in Chandigarh. Shagun handles strategy and marketing; Aniket handles development and design systems. We don't offshore, don't have interns, and don't use templates.
@@ -158,82 +174,53 @@
             <div class="container">
                 <div class="section-header text-center section-header--centered">
                     <span class="section-header__label motion-fade-up">What we do</span>
-                    <h2 class="section-header__title motion-fade-up">Services designed to accelerate your growth</h2>
-                    <p class="section-header__desc motion-fade-up mx-auto">End-to-end digital solutions tailored to your unique goals and challenges.</p>
+                    <h2 class="section-header__title motion-fade-up">Four disciplines.<br>One studio.</h2>
+                    <p class="section-header__desc motion-fade-up mx-auto">We don't hand you off to specialists mid-project. Brand identity, web development, digital advertising, and social strategy work better when the same people own all four.</p>
                 </div>
-                <div class="grid grid--2">
-                    <div class="card motion-fade-up">
-                        <div class="card__icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                                <path d="M2 17l10 5 10-5" />
-                                <path d="M2 12l10 5 10-5" />
-                            </svg>
-                        </div>
-                        <h4 class="card__title">Brand Identity</h4>
-                        <p class="card__desc">We shape how the world sees your business — turning a name into a brand people instantly recognise and trust.</p>
-                        <div class="card__tags">
+                <div class="services-grid motion-fade-up">
+                    <div class="service-cell" id="service-brand">
+                        <div class="service-cell__marker">Brand Identity</div>
+                        <h4 class="service-cell__title">Your brand is the first thing clients judge you by.</h4>
+                        <p class="service-cell__desc">We build visual systems that hold together across a business card, an Instagram post, and a billboard — because your brand needs to work in all three. Logo, color, typography, brand guidelines, and messaging frameworks included.</p>
+                        <div class="service-cell__tags">
                             <span class="tag">Logo Design</span>
                             <span class="tag">Visual Identity</span>
                             <span class="tag">Brand Strategy</span>
                         </div>
-                        <a href="/services#brand-identity" class="card__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        <a href="/services#brand-identity" class="service-cell__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
                     </div>
-                    <div class="card motion-fade-up">
-                        <div class="card__icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="3" width="20" height="14" rx="2" />
-                                <path d="M8 21h8" />
-                                <path d="M12 17v4" />
-                            </svg>
-                        </div>
-                        <h4 class="card__title">Web Development</h4>
-                        <p class="card__desc">Your website should work as hard as you do — fast, focused, and built to convert visitors into customers.</p>
-                        <div class="card__tags">
+                    <div class="service-cell" id="service-web">
+                        <div class="service-cell__marker">Web Development</div>
+                        <h4 class="service-cell__title">A site that loads fast and converts better than your competitors'.</h4>
+                        <p class="service-cell__desc">We build from scratch — no page builders, no themes. Every site we ship is accessible, mobile-first, and optimized for the search terms your actual customers use. Includes copy direction, SEO setup, and 30 days of post-launch support.</p>
+                        <div class="service-cell__tags">
                             <span class="tag">Custom Sites</span>
                             <span class="tag">E-Commerce</span>
                             <span class="tag">Web Apps</span>
                         </div>
-                        <a href="/services#web-development" class="card__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        <a href="/services#web-development" class="service-cell__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
                     </div>
-                    <div class="card motion-fade-up">
-                        <div class="card__icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                            </svg>
-                        </div>
-                        <h4 class="card__title">Digital Advertising</h4>
-                        <p class="card__desc">Performance-driven ad campaigns that make every marketing rupee earn its place and show you exactly what it returned.</p>
-                        <div class="card__tags">
+                    <div class="service-cell" id="service-ads">
+                        <div class="service-cell__marker">Digital Advertising</div>
+                        <h4 class="service-cell__title">Paid ads that pay back — not just spend your budget.</h4>
+                        <p class="service-cell__desc">We manage Meta and Google campaigns with a clear brief upfront: what a lead costs you now, and what we're targeting. Every rupee tracked, every creative tested. Monthly reports in plain language — no vanity metrics.</p>
+                        <div class="service-cell__tags">
                             <span class="tag">Meta Ads</span>
                             <span class="tag">Google Ads</span>
                             <span class="tag">Analytics</span>
                         </div>
-                        <a href="/services#digital-advertising" class="card__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        <a href="/services#digital-advertising" class="service-cell__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
                     </div>
-                    <div class="card motion-fade-up">
-                        <div class="card__icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 2h4v4" />
-                                <path d="M3 22l18-18" />
-                                <path d="M15 18v4h4" />
-                                <path d="M21 14l-8 8" />
-                                <path d="M3 8V4h4" />
-                                <path d="M9 2L3 8" />
-                            </svg>
-                        </div>
-                        <h4 class="card__title">Social Strategy</h4>
-                        <p class="card__desc">We turn your social channels into a growth engine — consistent content, real conversations, and an audience that keeps coming back.</p>
-                        <div class="card__tags">
+                    <div class="service-cell" id="service-social">
+                        <div class="service-cell__marker">Social Strategy</div>
+                        <h4 class="service-cell__title">Content that builds an audience before you need one.</h4>
+                        <p class="service-cell__desc">We plan, write, and schedule content for the platforms where your customers actually spend time. Strategy driven by your goals, not algorithm chasing — with a posting calendar, caption copy, and monthly performance reviews.</p>
+                        <div class="service-cell__tags">
                             <span class="tag">Content</span>
                             <span class="tag">Community</span>
                             <span class="tag">Growth</span>
                         </div>
-                        <a href="/services#social-strategy" class="card__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
+                        <a href="/services#social-strategy" class="service-cell__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
                     </div>
                 </div>
             </div>
@@ -264,8 +251,8 @@
             <div class="container">
                 <div class="section-header text-center section-header--centered">
                     <span class="section-header__label motion-fade-up">The team</span>
-                    <h2 class="section-header__title motion-fade-up">Passionate people behind every pixel</h2>
-                    <p class="section-header__desc motion-fade-up mx-auto">A lean, talented crew that brings diverse skills under one roof to deliver exceptional work.</p>
+                    <h2 class="section-header__title motion-fade-up">Two people. Every project.</h2>
+                    <p class="section-header__desc motion-fade-up mx-auto">Small enough to care about every client. Experienced enough to move fast and get it right.</p>
                 </div>
                 <div class="grid grid--2">
                     <div class="team-card motion-fade-up">
@@ -289,7 +276,7 @@
             <div class="container">
                 <div class="cta-banner motion-fade-up">
                     <h2 class="cta-banner__title">Your brand deserves to be remembered.</h2>
-                    <p class="cta-banner__desc">Let's discuss your project and find the perfect strategy to help your brand grow. No pressure, just a conversation.</p>
+                    <p class="cta-banner__desc">Tell us what you're building. We'll tell you honestly whether we're the right fit — and if we are, we'll get started this week.</p>
                     <a href="contact.html" class="btn btn--primary motion-scale">
                         Let's talk
                         <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
