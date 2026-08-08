@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
         rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
@@ -50,7 +50,7 @@
     </script>
 </head>
 
-<body>
+<body data-theme="hero">
     <div id="preloader">
         <div class="preloader-content">
             <span class="preloader-logo">Molivor<span>.</span></span>
@@ -58,25 +58,19 @@
         </div>
     </div>
     <script>
-        // Preloader Logic:
-        // 1. If Reload (Refresh): Clear session to force preloader to show.
-        // 2. If Internal Navigation (Home Click): Hide preloader if already visited.
         (function () {
             var isReload = false;
             try {
                 if (window.performance) {
                     var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
                     if (nav && nav.type === 'reload') isReload = true;
-                    // Fallback for older browsers
                     else if (performance.navigation && performance.navigation.type === 1) isReload = true;
                 }
             } catch (e) { }
 
             if (isReload) {
-                // User manually refreshed: Clear session so they see the preloader again
                 sessionStorage.removeItem('molivor_visited');
             } else if (sessionStorage.getItem('molivor_visited')) {
-                // Internal navigation: Hide preloader immediately
                 var p = document.getElementById('preloader');
                 if (p) p.style.display = 'none';
             }
@@ -85,7 +79,6 @@
     <a href="#main" class="skip-link">Skip to main content</a>
     <div class="scroll-progress" aria-hidden="true"></div>
 
-    <!-- Header -->
     <header class="header" role="banner">
         <div class="container header__inner">
             <a href="index.html" class="logo" aria-label="Molivor Studio Home">Molivor<span>.</span></a>
@@ -104,75 +97,51 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
         <a href="index.html" class="mobile-menu__link">Home</a>
         <a href="/services" class="mobile-menu__link">Services</a>
         <a href="contact.html" class="mobile-menu__link">Contact</a>
     </div>
 
-    <!-- Main Content -->
     <main id="main">
 
-        <!-- Hero -->
-        <section class="hero" aria-label="Introduction">
-            <div class="hero__bg" aria-hidden="true">
-                <div class="hero__gradient-1"></div>
-                <div class="hero__gradient-2"></div>
-            </div>
+        <section class="hero" data-section="hero" aria-label="Introduction">
+            <div class="hero__bg" aria-hidden="true"></div>
             <div class="container">
                 <div class="hero__content">
-                    <div class="hero__badge reveal">
-                        <span class="hero__badge-dot" aria-hidden="true"></span>
-                        Currently accepting new projects
-                    </div>
-                    <h1 class="hero__title reveal reveal--delay-1">
-                        We build <span class="highlight">digital products</span> that drive real growth
-                    </h1>
-                    <p class="hero__subtitle reveal reveal--delay-2">
-                        From compelling brand identities to high-performance websites and data-driven marketing
-                        campaigns — we transform ambitious ideas into measurable results.
-                    </p>
-                    <div class="hero__actions reveal reveal--delay-3">
-                        <a href="contact.html" class="btn btn--primary">
-                            Start a project
+                    <h1 class="hero__title motion-clip-wipe">Brand identity for businesses worth remembering.</h1>
+                    <p class="hero__subtitle motion-fade-up">Molivor builds the visual identity, website, and marketing engine your business needs to stand apart — then runs it while you focus on the work that matters.</p>
+                    <div class="hero__actions motion-fade-up">
+                        <a href="contact.html" class="btn btn--primary motion-scale">
+                            Let's talk
                             <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M5 12h14" />
                                 <path d="m12 5 7 7-7 7" />
                             </svg>
                         </a>
-                        <a href="/services" class="btn btn--outline">Explore services</a>
+                        <a href="/services" class="btn btn--outline motion-scale">Explore services</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About -->
-        <section class="section" aria-label="About us">
+        <section class="section" data-section="about" aria-label="About us">
             <div class="container">
                 <div class="about__grid">
-                    <div class="about__visual reveal">
+                    <div class="about__visual motion-fade-up">
                         <img src="img/about-visual.png" alt="Abstract representation of digital strategy and creativity"
                             class="about__image">
                     </div>
                     <div>
                         <div class="section-header">
-                            <span class="section-header__label reveal">Who we are</span>
-                            <h2 class="section-header__title reveal reveal--delay-1">A studio built on strategy,
-                                creativity, and results</h2>
-                            <p class="section-header__desc reveal reveal--delay-2">
-                                Founded with a belief that great design and smart strategy should be accessible to every
-                                ambitious business. We partner with startups and established brands to craft digital
-                                experiences that connect, convert, and scale.
-                            </p>
+                            <span class="section-header__label motion-fade-up">Who we are</span>
+                            <h2 class="section-header__title motion-fade-up">A studio built on strategy, creativity, and results</h2>
                         </div>
-                        <p class="reveal reveal--delay-3 mb-lg">
-                            Our multidisciplinary team blends design thinking with technical expertise to deliver
-                            solutions that look stunning and perform exceptionally. We don't just create — we measure,
-                            iterate, and optimize until the results speak for themselves.
+                        <p class="motion-fade-up mb-lg">
+                            We're a two-person studio based in Chandigarh. Shagun handles strategy and marketing; Aniket handles development and design systems. We don't offshore, don't have interns, and don't use templates.
                         </p>
-                        <a href="/services" class="btn btn--ghost reveal reveal--delay-4">
+                        <a href="/services" class="btn btn--ghost motion-fade-up">
                             See what we offer
                             <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -185,19 +154,15 @@
             </div>
         </section>
 
-        <!-- Services -->
-        <section class="section section--dark" aria-label="Our services">
+        <section class="section section--dark" data-section="services" aria-label="Our services">
             <div class="container">
                 <div class="section-header text-center section-header--centered">
-                    <span class="section-header__label reveal">What we do</span>
-                    <h2 class="section-header__title reveal reveal--delay-1">Services designed to accelerate your growth
-                    </h2>
-                    <p class="section-header__desc reveal reveal--delay-2 mx-auto">End-to-end digital
-                        solutions tailored to your unique goals and challenges.</p>
+                    <span class="section-header__label motion-fade-up">What we do</span>
+                    <h2 class="section-header__title motion-fade-up">Services designed to accelerate your growth</h2>
+                    <p class="section-header__desc motion-fade-up mx-auto">End-to-end digital solutions tailored to your unique goals and challenges.</p>
                 </div>
-                <div class="grid grid--4">
-                    <!-- Card 1: Branding -->
-                    <div class="card reveal">
+                <div class="grid grid--2">
+                    <div class="card motion-fade-up">
                         <div class="card__icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -213,12 +178,9 @@
                             <span class="tag">Visual Identity</span>
                             <span class="tag">Brand Strategy</span>
                         </div>
-                        <a href="/services#brand-identity" class="card__cta">
-                            Learn more <span aria-hidden="true">&rarr;</span>
-                        </a>
+                        <a href="/services#brand-identity" class="card__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
                     </div>
-                    <!-- Card 2: Web Development -->
-                    <div class="card reveal reveal--delay-1">
+                    <div class="card motion-fade-up">
                         <div class="card__icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -234,12 +196,9 @@
                             <span class="tag">E-Commerce</span>
                             <span class="tag">Web Apps</span>
                         </div>
-                        <a href="/services#web-development" class="card__cta">
-                            Learn more <span aria-hidden="true">&rarr;</span>
-                        </a>
+                        <a href="/services#web-development" class="card__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
                     </div>
-                    <!-- Card 3: Advertising -->
-                    <div class="card reveal reveal--delay-2">
+                    <div class="card motion-fade-up">
                         <div class="card__icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -253,12 +212,9 @@
                             <span class="tag">Google Ads</span>
                             <span class="tag">Analytics</span>
                         </div>
-                        <a href="/services#digital-advertising" class="card__cta">
-                            Learn more <span aria-hidden="true">&rarr;</span>
-                        </a>
+                        <a href="/services#digital-advertising" class="card__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
                     </div>
-                    <!-- Card 4: Social Media -->
-                    <div class="card reveal reveal--delay-3">
+                    <div class="card motion-fade-up">
                         <div class="card__icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round">
@@ -277,80 +233,65 @@
                             <span class="tag">Community</span>
                             <span class="tag">Growth</span>
                         </div>
-                        <a href="/services#social-strategy" class="card__cta">
-                            Learn more <span aria-hidden="true">&rarr;</span>
-                        </a>
+                        <a href="/services#social-strategy" class="card__cta">Learn more <span aria-hidden="true">&rarr;</span></a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stats -->
-        <section class="section" aria-label="Our impact in numbers">
+        <!-- Stats / Marquee -->
+        <section class="section" data-section="stats" aria-label="Stats">
             <div class="container">
-                <div class="section-header text-center section-header--centered">
-                    <span class="section-header__label reveal">Our impact</span>
-                    <h2 class="section-header__title reveal reveal--delay-1">Numbers that reflect our commitment</h2>
-                </div>
-                <div class="stats">
-                    <div class="stat reveal">
-                        <div class="stat__number">50+</div>
-                        <div class="stat__label">Projects Delivered</div>
+                <div class="motion-marquee motion-fade-up" aria-hidden="true">
+                    <div class="marquee-track">
+                        <span style="font-size:3rem; margin-right: 2rem; font-family: var(--font-heading); color: var(--gold);">&bull; Based in Chandigarh. Taking on new projects now. </span>
+                        <span style="font-size:3rem; margin-right: 2rem; font-family: var(--font-heading); color: var(--gold);">&bull; Based in Chandigarh. Taking on new projects now. </span>
+                        <span style="font-size:3rem; margin-right: 2rem; font-family: var(--font-heading); color: var(--gold);">&bull; Based in Chandigarh. Taking on new projects now. </span>
+                        <span style="font-size:3rem; margin-right: 2rem; font-family: var(--font-heading); color: var(--gold);">&bull; Based in Chandigarh. Taking on new projects now. </span>
                     </div>
-                    <div class="stat reveal reveal--delay-1">
-                        <div class="stat__number">30+</div>
-                        <div class="stat__label">Happy Clients</div>
-                    </div>
-                    <div class="stat reveal reveal--delay-2">
-                        <div class="stat__number">3+</div>
-                        <div class="stat__label">Years of Experience</div>
-                    </div>
-                    <div class="stat reveal reveal--delay-3">
-                        <div class="stat__number">95%</div>
-                        <div class="stat__label">Client Retention</div>
+                    <div class="marquee-track">
+                        <span style="font-size:3rem; margin-right: 2rem; font-family: var(--font-heading); color: var(--gold);">&bull; Based in Chandigarh. Taking on new projects now. </span>
+                        <span style="font-size:3rem; margin-right: 2rem; font-family: var(--font-heading); color: var(--gold);">&bull; Based in Chandigarh. Taking on new projects now. </span>
+                        <span style="font-size:3rem; margin-right: 2rem; font-family: var(--font-heading); color: var(--gold);">&bull; Based in Chandigarh. Taking on new projects now. </span>
+                        <span style="font-size:3rem; margin-right: 2rem; font-family: var(--font-heading); color: var(--gold);">&bull; Based in Chandigarh. Taking on new projects now. </span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Team -->
-        <section class="section section--dark" aria-label="Our team">
+        <section class="section section--dark" data-section="team" aria-label="Our team">
             <div class="container">
                 <div class="section-header text-center section-header--centered">
-                    <span class="section-header__label reveal">The team</span>
-                    <h2 class="section-header__title reveal reveal--delay-1">Passionate people behind every pixel</h2>
-                    <p class="section-header__desc reveal reveal--delay-2 mx-auto">A lean, talented crew
-                        that brings diverse skills under one roof to deliver exceptional work.</p>
+                    <span class="section-header__label motion-fade-up">The team</span>
+                    <h2 class="section-header__title motion-fade-up">Passionate people behind every pixel</h2>
+                    <p class="section-header__desc motion-fade-up mx-auto">A lean, talented crew that brings diverse skills under one roof to deliver exceptional work.</p>
                 </div>
                 <div class="grid grid--2">
-                    <div class="team-card reveal">
+                    <div class="team-card motion-fade-up">
                         <img src="img/Shagun Som.jpeg" alt="Shagun Som" class="team-card__avatar">
                         <h4 class="team-card__name">Shagun Som</h4>
                         <p class="team-card__role">Marketing Strategist</p>
-                        <p class="team-card__bio">Designs data-backed campaigns that connect with the right audience at
-                            the right time.</p>
+                        <p class="team-card__bio">Designs data-backed campaigns that connect with the right audience at the right time.</p>
                     </div>
-                    <div class="team-card reveal reveal--delay-1">
-                        <img src="img/aniket.jpg" alt="Aniket Bhatia" class="team-card__avatar"
-                            style="object-position: bottom;">
+                    <div class="team-card motion-fade-up">
+                        <img src="img/aniket.jpg" alt="Aniket Bhatia" class="team-card__avatar" style="object-position: bottom;">
                         <h4 class="team-card__name">Aniket Bhatia</h4>
                         <p class="team-card__role">Lead Developer</p>
-                        <p class="team-card__bio">Turns designs into performant, accessible digital experiences with
-                            clean, maintainable code.</p>
+                        <p class="team-card__bio">Turns designs into performant, accessible digital experiences with clean, maintainable code.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA -->
-        <section class="section" aria-label="Call to action">
+        <section class="section" data-section="cta" aria-label="Call to action">
             <div class="container">
-                <div class="cta-banner reveal">
-                    <h2 class="cta-banner__title">Ready to elevate your digital presence?</h2>
-                    <p class="cta-banner__desc">Let's discuss your project and find the perfect strategy to help your
-                        brand grow. No pressure, just a conversation.</p>
-                    <a href="contact.html" class="btn btn--primary">
-                        Schedule a free call
+                <div class="cta-banner motion-fade-up">
+                    <h2 class="cta-banner__title">Your brand deserves to be remembered.</h2>
+                    <p class="cta-banner__desc">Let's discuss your project and find the perfect strategy to help your brand grow. No pressure, just a conversation.</p>
+                    <a href="contact.html" class="btn btn--primary motion-scale">
+                        Let's talk
                         <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14" />
@@ -363,14 +304,15 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="footer" role="contentinfo">
+        <svg class="footer-wordmark motion-fade-up" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg">
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="var(--font-heading)" font-size="28" fill="var(--gold)" font-weight="bold">Molivor Studio</text>
+        </svg>
         <div class="container">
             <div class="footer__grid">
                 <div>
                     <a href="index.html" class="logo">Molivor<span>.</span></a>
-                    <p class="footer__brand-desc">A modern digital studio crafting brands, websites, and marketing
-                        strategies that deliver measurable results.</p>
+                    <p class="footer__brand-desc">A modern digital studio crafting brands, websites, and marketing strategies that deliver measurable results.</p>
                 </div>
                 <div>
                     <h5 class="footer__heading">Navigation</h5>
@@ -385,27 +327,23 @@
                     <ul class="footer__links">
                         <li><a href="/services#brand-identity" class="footer__link">Brand Identity</a></li>
                         <li><a href="/services#web-development" class="footer__link">Web Development</a></li>
-                        <li><a href="/services#digital-advertising" class="footer__link">Digital Advertising</a>
-                        </li>
+                        <li><a href="/services#digital-advertising" class="footer__link">Digital Advertising</a></li>
                         <li><a href="/services#social-strategy" class="footer__link">Social Strategy</a></li>
                     </ul>
                 </div>
                 <div>
                     <h5 class="footer__heading">Stay Updated</h5>
-                    <p class="text-sm color-secondary mb-md">Get
-                        insights and tips delivered to your inbox.</p>
-                    <form class="footer__newsletter" name="newsletter" method="POST" data-netlify="true"
-                        aria-label="Newsletter signup">
+                    <p class="text-sm color-secondary mb-md">Get insights and tips delivered to your inbox.</p>
+                    <form class="footer__newsletter" name="newsletter" method="POST" data-netlify="true" aria-label="Newsletter signup">
                         <input type="hidden" name="form-name" value="newsletter">
                         <label for="newsletter-email" class="skip-link">Email address</label>
-                        <input type="email" id="newsletter-email" name="email" class="footer__newsletter-input"
-                            placeholder="Your email" required>
+                        <input type="email" id="newsletter-email" name="email" class="footer__newsletter-input" placeholder="Your email" required>
                         <button type="submit" class="footer__newsletter-btn">Join</button>
                     </form>
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2025 Kasam Ventures. All rights reserved.</p>
+                <p>&copy; 2026 Molivor Studio. All rights reserved.</p>
                 <p>Crafted in Chandigarh, India.</p>
             </div>
         </div>
@@ -413,5 +351,4 @@
 
     <script src="js/main.js"></script>
 </body>
-
 </html>
