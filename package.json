@@ -1,7 +1,7 @@
 {
-    "name": "apex-studio",
+    "name": "molivor-studio",
     "version": "1.0.0",
-    "description": "Apex Studio — A modern digital agency website",
+    "description": "Molivor Studio — A modern digital agency website",
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
@@ -12,7 +12,7 @@
         "portfolio",
         "express"
     ],
-    "author": "Apex Studio",
+    "author": "Molivor Studio",
     "license": "MIT",
     "dependencies": {
         "compression": "^1.7.4",

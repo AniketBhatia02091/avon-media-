@@ -10,10 +10,19 @@
     <meta property="og:title" content="Contact — Molivor Studio">
     <meta property="og:description" content="Start a conversation about your next project.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://molivor.com/contact">
+    <meta property="og:image" content="https://molivor.com/img/about-visual.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact — Molivor Studio">
+    <meta name="twitter:description" content="Start a conversation about your next project.">
+    <meta name="twitter:image" content="https://molivor.com/img/about-visual.png">
+    <link rel="canonical" href="https://molivor.com/contact">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Sora:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
         rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/style.css">
@@ -30,7 +39,7 @@
             <nav aria-label="Main navigation">
                 <ul class="nav__list">
                     <li><a href="index.html" class="nav__link">Home</a></li>
-                    <li><a href="services.html" class="nav__link">Services</a></li>
+                    <li><a href="/services" class="nav__link">Services</a></li>
                     <li><a href="contact.html" class="nav__link nav__link--active">Contact</a></li>
                 </ul>
             </nav>
@@ -45,7 +54,7 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
         <a href="index.html" class="mobile-menu__link">Home</a>
-        <a href="services.html" class="mobile-menu__link">Services</a>
+        <a href="/services" class="mobile-menu__link">Services</a>
         <a href="contact.html" class="mobile-menu__link">Contact</a>
     </div>
 
@@ -61,8 +70,9 @@
                     <span class="breadcrumb__sep" aria-hidden="true">/</span>
                     <span aria-current="page">Contact</span>
                 </nav>
-                <h1 class="page-banner__title motion-fade-up delay-1">Let's Talk</h1>
-                <p class="page-banner__desc motion-fade-up delay-2">Tell us what you're building. We'll respond within one business day with honest thoughts on fit and next steps.</p>
+                <h1 class="page-banner__title reveal reveal--delay-1">Let's Talk</h1>
+                <p class="page-banner__desc reveal reveal--delay-2">Have a project idea, a question, or just want to say
+                    hello? We'd love to hear from you.</p>
             </div>
         </section>
 
@@ -75,7 +85,8 @@
                         <h2 class="mb-md">Send us a message</h2>
                         <p class="mb-2xl color-secondary">Fill out the form
                             below and our team will get back to you within 24 hours.</p>
-                        <form class="form" name="contact" method="POST" netlify novalidate>
+                        <form class="form" name="contact" method="POST" data-netlify="true" novalidate>
+                            <input type="hidden" name="form-name" value="contact">
                             <div class="form__row">
                                 <div class="form__group" data-required>
                                     <label class="form__label" for="contact-name">Full Name</label>
@@ -201,34 +212,33 @@
             <div class="footer__grid">
                 <div>
                     <a href="index.html" class="logo">Molivor<span>.</span></a>
-                    <p class="footer__brand-desc">
-                            A brand and digital studio based in Chandigarh.<br>
-                            We work with small businesses serious about their identity.
-                        </p>
+                    <p class="footer__brand-desc">A modern digital studio crafting brands, websites, and marketing
+                        strategies that deliver measurable results.</p>
                 </div>
                 <div>
                     <h5 class="footer__heading">Navigation</h5>
                     <ul class="footer__links">
                         <li><a href="index.html" class="footer__link">Home</a></li>
-                        <li><a href="services.html" class="footer__link">Services</a></li>
+                        <li><a href="/services" class="footer__link">Services</a></li>
                         <li><a href="contact.html" class="footer__link">Contact</a></li>
                     </ul>
                 </div>
                 <div>
                     <h5 class="footer__heading">Services</h5>
                     <ul class="footer__links">
-                        <li><a href="services.html" class="footer__link">Brand Identity</a></li>
-                        <li><a href="services.html" class="footer__link">Web Development</a></li>
-                        <li><a href="services.html" class="footer__link">Digital Advertising</a></li>
-                        <li><a href="services.html" class="footer__link">Social Strategy</a></li>
+                        <li><a href="/services#brand-identity" class="footer__link">Brand Identity</a></li>
+                        <li><a href="/services#web-development" class="footer__link">Web Development</a></li>
+                        <li><a href="/services#digital-advertising" class="footer__link">Digital Advertising</a></li>
+                        <li><a href="/services#social-strategy" class="footer__link">Social Strategy</a></li>
                     </ul>
                 </div>
                 <div>
                     <h5 class="footer__heading">Stay Updated</h5>
                     <p class="text-sm color-secondary mb-md">Get
                         insights and tips delivered to your inbox.</p>
-                    <form class="footer__newsletter" name="newsletter" method="POST" netlify
+                    <form class="footer__newsletter" name="newsletter" method="POST" data-netlify="true"
                         aria-label="Newsletter signup">
+                        <input type="hidden" name="form-name" value="newsletter">
                         <label for="newsletter-email-contact" class="skip-link">Email address</label>
                         <input type="email" id="newsletter-email-contact" name="email" class="footer__newsletter-input"
                             placeholder="Your email" required>

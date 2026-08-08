@@ -8,19 +8,19 @@
 
   // --- Scroll Progress Bar ---
   function initScrollProgress() {
-    var bar = document.querySelector('.scroll-progress');
+    const bar = document.querySelector('.scroll-progress');
     if (!bar) return;
     window.addEventListener('scroll', function () {
-      var scrollTop  = window.scrollY;
-      var docHeight  = document.documentElement.scrollHeight - window.innerHeight;
-      var percent    = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       bar.style.width = percent + '%';
     }, { passive: true });
   }
 
   // --- Sticky Header ---
   function initStickyHeader() {
-    var header = document.querySelector('.header');
+    const header = document.querySelector('.header');
     if (!header) return;
     window.addEventListener('scroll', function () {
       header.classList.toggle('header--scrolled', window.scrollY > 60);
@@ -29,14 +29,13 @@
 
   // --- Mobile Menu ---
   function initMobileMenu() {
-    var hamburger  = document.querySelector('.hamburger');
-    var mobileMenu = document.querySelector('.mobile-menu');
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
     if (!hamburger || !mobileMenu) return;
 
     hamburger.addEventListener('click', function () {
-      var isOpen = hamburger.classList.toggle('hamburger--open');
+      const isOpen = hamburger.classList.toggle('hamburger--open');
       mobileMenu.classList.toggle('mobile-menu--open', isOpen);
-      hamburger.setAttribute('aria-expanded', String(isOpen));
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
@@ -44,7 +43,6 @@
       link.addEventListener('click', function () {
         hamburger.classList.remove('hamburger--open');
         mobileMenu.classList.remove('mobile-menu--open');
-        hamburger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       });
     });
@@ -60,28 +58,26 @@
       var target = document.querySelector(targetId);
       if (!target) return;
       e.preventDefault();
-      var top = target.getBoundingClientRect().top + window.scrollY - 80;
+      var offset = 80;
+      var top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
   }
 
   // --- Scroll Reveal Animations ---
-  // motion-fade-up (new) + .reveal (backwards-compat alias)
   function initRevealAnimations() {
-    var elements = document.querySelectorAll('.motion-fade-up, .reveal');
+    var elements = document.querySelectorAll('.reveal');
     if (!elements.length) return;
 
     if (!('IntersectionObserver' in window)) {
-      elements.forEach(function (el) {
-        el.classList.add('is-visible', 'reveal--visible');
-      });
+      elements.forEach(function (el) { el.classList.add('reveal--visible'); });
       return;
     }
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible', 'reveal--visible');
+          entry.target.classList.add('reveal--visible');
           observer.unobserve(entry.target);
         }
       });
@@ -90,34 +86,12 @@
     elements.forEach(function (el) { observer.observe(el); });
   }
 
-  // --- Section-Reactive Color ---
-  // Watches data-section elements; sets body[data-theme] as they enter
-  // the viewport. CSS @property transitions --gold between sections.
-  function initSectionTheme() {
-    var sections = document.querySelectorAll('[data-section]');
-    if (!sections.length) return;
-
-    if (!('IntersectionObserver' in window)) return;
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          document.body.dataset.theme = entry.target.dataset.section;
-        }
-      });
-    }, {
-      threshold: 0.35   // fires when 35% of section is in view
-    });
-
-    sections.forEach(function (s) { observer.observe(s); });
-  }
-
   // --- Accordion ---
   function initAccordion() {
     document.querySelectorAll('.accordion__trigger').forEach(function (trigger) {
       trigger.addEventListener('click', function () {
-        var item   = trigger.closest('.accordion__item');
-        var body   = item.querySelector('.accordion__body');
+        var item = trigger.closest('.accordion__item');
+        var body = item.querySelector('.accordion__body');
         var isOpen = item.classList.contains('accordion__item--open');
 
         // Close all siblings in the same accordion
@@ -127,19 +101,17 @@
             if (openItem !== item) {
               openItem.classList.remove('accordion__item--open');
               openItem.querySelector('.accordion__body').style.maxHeight = '0';
-              openItem.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'false');
             }
           });
         }
 
+        // Toggle current
         if (isOpen) {
           item.classList.remove('accordion__item--open');
           body.style.maxHeight = '0';
-          trigger.setAttribute('aria-expanded', 'false');
         } else {
           item.classList.add('accordion__item--open');
           body.style.maxHeight = body.scrollHeight + 'px';
-          trigger.setAttribute('aria-expanded', 'true');
         }
       });
     });
@@ -155,7 +127,7 @@
       var valid = true;
 
       form.querySelectorAll('.form__group[data-required]').forEach(function (group) {
-        var input   = group.querySelector('.form__input, .form__textarea');
+        var input = group.querySelector('.form__input, .form__textarea');
         var errorEl = group.querySelector('.form__error');
 
         group.classList.remove('form__group--error');
@@ -176,9 +148,12 @@
         }
       });
 
+      // Validating Phone Number specifically
       var phoneInput = form.querySelector('#contact-phone');
       if (phoneInput && phoneInput.value.trim()) {
         var phoneGroup = phoneInput.closest('.form__group');
+        // Allows +, -, space, and digits. Must be between 7 and 15 chars.
+        // Also rejects if it contains letters (which the user specifically complained about)
         var phoneRegex = /^[+]?[0-9\s-]{7,15}$/;
         var hasLetters = /[a-zA-Z]/.test(phoneInput.value);
 
@@ -192,13 +167,15 @@
 
       if (!valid) return;
 
-      var btn         = form.querySelector('.btn');
+      var btn = form.querySelector('.btn');
       var originalHTML = btn.innerHTML;
-      btn.textContent  = 'Sending…';
-      btn.disabled     = true;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
       btn.style.opacity = '0.7';
 
-      var payload = new URLSearchParams(new FormData(form)).toString();
+      var formData = new FormData(form);
+      formData.append('form-name', form.getAttribute('name'));
+      var payload = new URLSearchParams(formData).toString();
 
       fetch('/', {
         method: 'POST',
@@ -207,15 +184,13 @@
       })
         .then(function (res) {
           if (res.ok) {
-            btn.textContent       = '✓ Message sent';
-            btn.style.background  = 'var(--success)';
-            btn.style.color       = '#fff';
-            btn.style.opacity     = '1';
+            btn.textContent = '✓ Message sent!';
+            btn.style.background = 'var(--success)';
+            btn.style.opacity = '1';
             setTimeout(function () {
-              btn.innerHTML        = originalHTML;
+              btn.innerHTML = originalHTML;
               btn.style.background = '';
-              btn.style.color      = '';
-              btn.disabled         = false;
+              btn.disabled = false;
               form.reset();
             }, 3000);
           } else {
@@ -223,15 +198,13 @@
           }
         })
         .catch(function () {
-          btn.textContent       = 'Network error — try again';
-          btn.style.background  = 'var(--error)';
-          btn.style.color       = '#fff';
-          btn.style.opacity     = '1';
+          btn.textContent = 'Network error — try again';
+          btn.style.background = '#ef4444';
+          btn.style.opacity = '1';
           setTimeout(function () {
-            btn.innerHTML        = originalHTML;
+            btn.innerHTML = originalHTML;
             btn.style.background = '';
-            btn.style.color      = '';
-            btn.disabled         = false;
+            btn.disabled = false;
           }, 3000);
         });
     });
@@ -243,23 +216,26 @@
       form.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        var input        = form.querySelector('.footer__newsletter-input');
-        var btn          = form.querySelector('.footer__newsletter-btn');
-        var email        = input.value.trim();
+        var input = form.querySelector('.footer__newsletter-input');
+        var btn = form.querySelector('.footer__newsletter-btn');
+        var email = input.value.trim();
+
         if (!email) return;
 
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-          input.style.borderColor = 'var(--error)';
+          input.style.borderColor = '#ef4444';
           setTimeout(function () { input.style.borderColor = ''; }, 2000);
           return;
         }
 
         var originalText = btn.textContent;
-        btn.textContent  = '…';
-        btn.disabled     = true;
+        btn.textContent = '...';
+        btn.disabled = true;
 
-        var payload = new URLSearchParams(new FormData(form)).toString();
+        var formData = new FormData(form);
+        formData.append('form-name', form.getAttribute('name'));
+        var payload = new URLSearchParams(formData).toString();
 
         fetch('/', {
           method: 'POST',
@@ -268,29 +244,27 @@
         })
           .then(function (res) {
             if (res.ok) {
-              btn.textContent      = '✓';
+              btn.textContent = '✓';
               btn.style.background = 'var(--success)';
-              btn.style.color      = '#fff';
-              input.value          = '';
-              input.placeholder    = 'Thanks!';
+              input.value = '';
+              input.placeholder = 'Thanks for subscribing!';
               setTimeout(function () {
-                btn.textContent      = originalText;
+                btn.textContent = originalText;
                 btn.style.background = '';
-                btn.style.color      = '';
-                btn.disabled         = false;
-                input.placeholder    = 'Your email';
+                btn.disabled = false;
+                input.placeholder = 'Your email';
               }, 3000);
             } else {
               throw new Error('Subscription failed');
             }
           })
           .catch(function () {
-            btn.textContent      = '✗';
-            btn.style.background = 'var(--error)';
+            btn.textContent = '✗';
+            btn.style.background = '#ef4444';
             setTimeout(function () {
-              btn.textContent      = originalText;
+              btn.textContent = originalText;
               btn.style.background = '';
-              btn.disabled         = false;
+              btn.disabled = false;
             }, 2000);
           });
       });
@@ -301,55 +275,91 @@
   function initActiveNav() {
     var currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav__link, .mobile-menu__link').forEach(function (link) {
-      if (link.getAttribute('href') === currentPage) {
+      var href = link.getAttribute('href');
+      if (href === currentPage) {
         link.classList.add('nav__link--active');
       }
     });
   }
 
-  // --- Hero Clip-Wipe Entrance ---
-  // Called after the preloader exits (or immediately if no preloader).
-  // Adds .hero--ready to trigger the CSS clip-path transition on .hero__title.
-  function fireHeroAnimation() {
-    var hero = document.querySelector('.hero');
-    if (!hero) return;
-    // Small resting beat so the transition is perceivable
-    setTimeout(function () {
-      hero.classList.add('hero--ready');
-    }, 120);
+  // --- Dynamic Cursor Glow ---
+  function initCursorGlow() {
+    var glow = document.createElement('div');
+    glow.classList.add('cursor-glow');
+    document.body.appendChild(glow);
+
+    var mouseX = 0;
+    var mouseY = 0;
+    var glowX = 0;
+    var glowY = 0;
+
+    document.addEventListener('mousemove', function (e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animate() {
+      // Smooth lerp
+      glowX += (mouseX - glowX) * 0.1;
+      glowY += (mouseY - glowY) * 0.1;
+
+      glow.style.transform = 'translate(' + (glowX - 300) + 'px, ' + (glowY - 300) + 'px)';
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  }
+
+  // --- Ambient Orbs ---
+  function initAmbientOrbs() {
+    var container = document.createElement('div');
+    container.classList.add('orb-container');
+
+    var orb1 = document.createElement('div');
+    orb1.classList.add('orb', 'orb--1');
+
+    var orb2 = document.createElement('div');
+    orb2.classList.add('orb', 'orb--2');
+
+    var orb3 = document.createElement('div');
+    orb3.classList.add('orb', 'orb--3');
+
+    container.appendChild(orb1);
+    container.appendChild(orb2);
+    container.appendChild(orb3);
+
+    document.body.prepend(container);
   }
 
   // --- Preloader ---
   function initPreloader() {
-    var visited   = sessionStorage.getItem('molivor_visited');
+    // Always mark as visited for this session, regardless of page
+    const visited = sessionStorage.getItem('molivor_visited');
     sessionStorage.setItem('molivor_visited', 'true');
 
-    var preloader = document.getElementById('preloader');
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
 
-    if (!preloader) {
-      // No preloader on this page — fire hero animation right away
-      fireHeroAnimation();
-      return;
-    }
-
+    // Check if user has already visited in this session
     if (visited) {
       preloader.style.display = 'none';
-      fireHeroAnimation();
       return;
     }
 
-    var minTime  = 1500;
-    var startTime = Date.now();
+    // Mark as visited for this session
+    sessionStorage.setItem('molivor_visited', 'true');
+
+    // Minimum display time for the animation (1.5s)
+    const minTime = 1500;
+    const startTime = Date.now();
 
     window.addEventListener('load', function () {
-      var elapsed   = Date.now() - startTime;
-      var remaining = Math.max(0, minTime - elapsed);
+      const elapsedTime = Date.now() - startTime;
+      const remainingTime = Math.max(0, minTime - elapsedTime);
 
       setTimeout(function () {
         preloader.classList.add('preloader--hidden');
-        // Fire hero animation after preloader starts fading (0.6s transition)
-        setTimeout(fireHeroAnimation, 400);
-      }, remaining);
+      }, remainingTime);
     });
   }
 
@@ -360,13 +370,13 @@
     initMobileMenu();
     initSmoothScroll();
     initRevealAnimations();
-    initSectionTheme();
     initAccordion();
     initFormValidation();
     initNewsletter();
     initActiveNav();
+    initCursorGlow();
+    initAmbientOrbs();
     initPreloader();
-    // Removed: initAmbientOrbs(), initCursorGlow()
   }
 
   if (document.readyState === 'loading') {
@@ -376,3 +386,4 @@
   }
 
 })();
+

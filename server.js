@@ -1,5 +1,5 @@
 /* ========================================
-   Apex Studio — Express Server
+   Molivor Studio — Express Server
    ======================================== */
 
 const express = require('express');
@@ -102,5 +102,5 @@ app.use((_req, res) => {
 
 /* --- Start Server --- */
 app.listen(PORT, () => {
-    console.log(`\n  ✦  Apex Studio is live at http://localhost:${PORT}\n`);
+    console.log(`\n  ✦  Molivor Studio is live at http://localhost:${PORT}\n`);
 });

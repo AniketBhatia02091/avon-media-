@@ -1,4 +1,4 @@
-# Apex Studio — Digital Agency Website
+# Molivor Studio — Digital Agency Website
 
 A modern, production-ready digital agency website built with **Node.js + Express** and vanilla HTML/CSS/JS. Features a premium dark-themed UI with smooth animations, responsive design, and clean architecture.
 
