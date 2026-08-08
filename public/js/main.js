@@ -66,24 +66,40 @@
 
   // --- Scroll Reveal Animations ---
   function initRevealAnimations() {
-    var elements = document.querySelectorAll('.reveal');
+    var elements = document.querySelectorAll('.motion-fade-up, .motion-clip-wipe');
     if (!elements.length) return;
 
     if (!('IntersectionObserver' in window)) {
-      elements.forEach(function (el) { el.classList.add('reveal--visible'); });
+      elements.forEach(function (el) { el.classList.add('is-visible'); });
       return;
     }
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add('reveal--visible');
+          entry.target.classList.add('is-visible');
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     elements.forEach(function (el) { observer.observe(el); });
+  }
+
+  // --- Section Reactive Theme ---
+  function initSectionReactiveTheme() {
+    var sections = document.querySelectorAll('[data-section]');
+    if (!sections.length) return;
+    
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          document.body.setAttribute('data-theme', entry.target.getAttribute('data-section'));
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    sections.forEach(function(section) { observer.observe(section); });
   }
 
   // --- Accordion ---
@@ -282,55 +298,6 @@
     });
   }
 
-  // --- Dynamic Cursor Glow ---
-  function initCursorGlow() {
-    var glow = document.createElement('div');
-    glow.classList.add('cursor-glow');
-    document.body.appendChild(glow);
-
-    var mouseX = 0;
-    var mouseY = 0;
-    var glowX = 0;
-    var glowY = 0;
-
-    document.addEventListener('mousemove', function (e) {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    function animate() {
-      // Smooth lerp
-      glowX += (mouseX - glowX) * 0.1;
-      glowY += (mouseY - glowY) * 0.1;
-
-      glow.style.transform = 'translate(' + (glowX - 300) + 'px, ' + (glowY - 300) + 'px)';
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-  }
-
-  // --- Ambient Orbs ---
-  function initAmbientOrbs() {
-    var container = document.createElement('div');
-    container.classList.add('orb-container');
-
-    var orb1 = document.createElement('div');
-    orb1.classList.add('orb', 'orb--1');
-
-    var orb2 = document.createElement('div');
-    orb2.classList.add('orb', 'orb--2');
-
-    var orb3 = document.createElement('div');
-    orb3.classList.add('orb', 'orb--3');
-
-    container.appendChild(orb1);
-    container.appendChild(orb2);
-    container.appendChild(orb3);
-
-    document.body.prepend(container);
-  }
-
   // --- Preloader ---
   function initPreloader() {
     // Always mark as visited for this session, regardless of page
@@ -370,12 +337,11 @@
     initMobileMenu();
     initSmoothScroll();
     initRevealAnimations();
+    initSectionReactiveTheme();
     initAccordion();
     initFormValidation();
     initNewsletter();
     initActiveNav();
-    initCursorGlow();
-    initAmbientOrbs();
     initPreloader();
   }
 
