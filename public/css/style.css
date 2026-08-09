@@ -908,8 +908,8 @@ p { max-width: 65ch; }
 
 .team-card {
   display: flex;
-  gap: var(--space-lg);
-  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--space-md);
   padding: var(--space-xl);
   border: 1px solid var(--border-solid);
   border-radius: var(--radius-lg);
@@ -920,8 +920,8 @@ p { max-width: 65ch; }
 .team-card:hover { border-color: var(--border); }
 
 .team-card__avatar {
-  width: 88px;
-  height: 88px;
+  width: 72px;
+  height: 72px;
   border-radius: var(--radius-md);
   object-fit: cover;
   flex-shrink: 0;
@@ -935,9 +935,10 @@ p { max-width: 65ch; }
 .team-card__body {}
 
 .team-card__name {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   margin-bottom: 2px;
   letter-spacing: -0.02em;
+  color: var(--chalk);
 }
 
 .team-card__role {
@@ -949,7 +950,7 @@ p { max-width: 65ch; }
 }
 
 .team-card__bio {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--ash);
   line-height: 1.7;
 }
