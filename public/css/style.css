@@ -169,10 +169,13 @@ p { max-width: 65ch; }
 /* 3. Scale — card/button hover states */
 .motion-scale {
   transition: transform var(--dur-fast) var(--ease-out);
+  will-change: transform;
 }
 
-.motion-scale:hover {
-  transform: scale(1.015);
+@media (hover: hover) {
+  .motion-scale:hover {
+    transform: scale(1.015);
+  }
 }
 
 /* 4. Marquee — formalized as primitive (see .marquee component) */
@@ -452,22 +455,22 @@ p { max-width: 65ch; }
   color: var(--ink);
 }
 
-.btn--primary:hover {
-  background: var(--chalk);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(201, 150, 58, 0.25);
-}
+@media (hover: hover) {
+  .btn--primary:hover {
+    background: var(--gold-dim);
+    transform: translateY(-2px);
+  }
 
-.btn--outline {
-  background: transparent;
-  color: var(--chalk);
-  border: 1.5px solid var(--border-solid);
-}
+  .btn--outline:hover {
+    background: var(--gold-glow);
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+  }
 
-.btn--outline:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  transform: translateY(-2px);
+  .btn--ghost:hover { color: var(--chalk); }
+
+  .btn:hover .btn__arrow { transform: translateX(4px); }
 }
 
 .btn--ghost {
@@ -476,13 +479,13 @@ p { max-width: 65ch; }
   padding: 0;
 }
 
-.btn--ghost:hover { color: var(--chalk); }
+
 
 .btn__arrow {
   transition: transform var(--dur-fast) var(--ease-out);
 }
 
-.btn:hover .btn__arrow { transform: translateX(4px); }
+
 
 /* ==========================================
    HERO
@@ -852,11 +855,13 @@ p { max-width: 65ch; }
     box-shadow     var(--dur-base) var(--ease-out);
 }
 
-.card:hover {
-  background: #201f16;
-  border-color: var(--gold);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+@media (hover: hover) {
+  .card:hover {
+    background: #201f16;
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  }
 }
 
 .card__icon {
@@ -897,7 +902,7 @@ p { max-width: 65ch; }
 
 @media (min-width: 768px) {
   .team-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
