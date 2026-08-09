@@ -1133,17 +1133,23 @@ p { max-width: 65ch; }
 
 /* Wordmark ghost — editorial, not decorative */
 .footer__wordmark {
-  position: absolute;
-  bottom: -0.5rem;
-  right: -1rem;
-  height: 10rem;
-  max-width: 90vw;  /* Prevent bleed past viewport on narrow screens */
-  width: auto;
-  opacity: 0.04;
-  pointer-events: none;
-  color: var(--chalk);
-  user-select: none;
-  z-index: 0;
+  display: none; /* Hidden on mobile — scaled SVG stroke reads too prominently at small widths */
+}
+
+@media (min-width: 768px) {
+  .footer__wordmark {
+    display: block;
+    position: absolute;
+    bottom: -0.5rem;
+    right: -1rem;
+    height: 10rem;
+    width: auto;
+    opacity: 0.04;
+    pointer-events: none;
+    color: var(--chalk);
+    user-select: none;
+    z-index: 0;
+  }
 }
 
 .footer__inner {
