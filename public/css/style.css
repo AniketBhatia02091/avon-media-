@@ -15,6 +15,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden; /* Required alongside body — iOS Safari ignores body-only */
 }
 
 body {
@@ -35,6 +36,10 @@ textarea {
   font: inherit;
   border: none;
   outline: none;
+}
+
+a, button {
+  touch-action: manipulation; /* Eliminates 300ms tap delay; prevents ghost hover on mobile */
 }
 
 a {
@@ -1132,6 +1137,7 @@ p { max-width: 65ch; }
   bottom: -0.5rem;
   right: -1rem;
   height: 10rem;
+  max-width: 90vw;  /* Prevent bleed past viewport on narrow screens */
   width: auto;
   opacity: 0.04;
   pointer-events: none;
