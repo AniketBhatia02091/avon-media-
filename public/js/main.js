@@ -373,13 +373,16 @@
   // --- Media Kit Modal ---
   function initMediaKitModal() {
     var modal   = document.getElementById('media-kit-modal');
-    var cta     = document.getElementById('campus-ad-cta');
+    var ctaButtons = document.querySelectorAll('[aria-controls="media-kit-modal"], #campus-ad-cta, .open-media-kit-modal');
     var closeBtn= document.getElementById('modal-close');
     var overlay = document.getElementById('modal-overlay');
     var form    = document.getElementById('media-kit-form');
-    if (!modal || !cta) return;
+    if (!modal) return;
 
-    function openModal() {
+    var activeTrigger = null;
+
+    function openModal(e) {
+      if (e) activeTrigger = e.currentTarget;
       modal.hidden = false;
       document.body.style.overflow = 'hidden';
       var firstInput = modal.querySelector('input, select, button');
@@ -389,10 +392,13 @@
     function closeModal() {
       modal.hidden = true;
       document.body.style.overflow = '';
-      if (cta) cta.focus();
+      if (activeTrigger) activeTrigger.focus();
     }
 
-    cta.addEventListener('click', openModal);
+    ctaButtons.forEach(function(cta) {
+      cta.addEventListener('click', openModal);
+    });
+
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (overlay)  overlay.addEventListener('click', closeModal);
 
