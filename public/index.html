@@ -229,6 +229,149 @@
             </div>
         </section>
 
+        <!-- ==========================================
+             ADVERTISE ON CAMPUS
+             Vending machine media buy section
+             ========================================== -->
+        <section class="section campus-ad" id="advertise-on-campus" data-section="campus" aria-label="Advertise on Campus">
+            <div class="container">
+
+                <!-- Section header -->
+                <div class="campus-ad__header">
+                    <div class="campus-ad__header-text">
+                        <span class="section-header__label motion-fade-up">Vending Machine Marketing</span>
+                        <h2 class="campus-ad__title motion-fade-up">Advertise on Campus.</h2>
+                        <p class="campus-ad__subhead motion-fade-up">Put your brand on India's smartest vending network — reaching students every single day across premier university campuses.</p>
+                        <p class="campus-ad__body motion-fade-up">Kasam Ventures' smart vending machines sit at the highest-traffic points of campus life — canteens, hostels, libraries — turning everyday student interactions into brand touchpoints, at scale.</p>
+                        <button class="btn btn--primary motion-fade-up" id="campus-ad-cta" aria-haspopup="dialog" aria-controls="media-kit-modal">
+                            Get the Media Kit
+                            <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="campus-ad__visual motion-fade-up" aria-hidden="true">
+                        <!-- Image crop: push left panel (wordmark) out of frame -->
+                        <div class="campus-ad__img-crop">
+                            <img src="img/2.png" alt="Kasam Ventures smart vending machine" class="campus-ad__img">
+                            <!-- Ad mockup overlay — positioned over touchscreen -->
+                            <div class="campus-ad__screen-overlay" aria-hidden="true">
+                                <span class="campus-ad__screen-label">YOUR AD HERE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stat ticker — SVG hatch texture behind this strip only -->
+                <div class="campus-ad__ticker-wrap" aria-label="Campus network statistics">
+                    <div class="campus-ad__hatch" aria-hidden="true"></div>
+                    <div class="marquee" role="marquee" aria-live="off">
+                        <div class="marquee__track" aria-hidden="true">
+                            <span class="marquee__item">60+ campuses live across India</span>
+                            <span class="marquee__sep" aria-hidden="true">◆</span>
+                            <span class="marquee__item marquee__item--highlight">1 Lakh+ daily footfall reached</span>
+                            <span class="marquee__sep" aria-hidden="true">◆</span>
+                            <span class="marquee__item">Featured at JB Knowledge Park, Thapar University &amp; BHU</span>
+                            <span class="marquee__sep" aria-hidden="true">◆</span>
+                            <!-- Duplicate for seamless loop -->
+                            <span class="marquee__item">60+ campuses live across India</span>
+                            <span class="marquee__sep" aria-hidden="true">◆</span>
+                            <span class="marquee__item marquee__item--highlight">1 Lakh+ daily footfall reached</span>
+                            <span class="marquee__sep" aria-hidden="true">◆</span>
+                            <span class="marquee__item">Featured at JB Knowledge Park, Thapar University &amp; BHU</span>
+                            <span class="marquee__sep" aria-hidden="true">◆</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campus highlight cards -->
+                <div class="campus-ad__campuses motion-fade-up" aria-label="Featured campuses">
+                    <div class="campus-card">
+                        <div class="campus-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <div>
+                            <p class="campus-card__name">JB Knowledge Park</p>
+                            <p class="campus-card__loc">Faridabad, Haryana</p>
+                        </div>
+                    </div>
+                    <div class="campus-card">
+                        <div class="campus-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <div>
+                            <p class="campus-card__name">Thapar University</p>
+                            <p class="campus-card__loc">Patiala, Punjab</p>
+                        </div>
+                    </div>
+                    <div class="campus-card">
+                        <div class="campus-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <div>
+                            <p class="campus-card__name">Banaras Hindu University</p>
+                            <p class="campus-card__loc">Varanasi, Uttar Pradesh</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==========================================
+             MEDIA KIT MODAL
+             ========================================== -->
+        <div id="media-kit-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+            <div class="modal__overlay" id="modal-overlay" aria-hidden="true"></div>
+            <div class="modal__panel">
+                <button class="modal__close" id="modal-close" aria-label="Close media kit form">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+                <span class="section-header__label">Vending Machine Marketing</span>
+                <h2 id="modal-title" class="modal__title">Get the Media Kit</h2>
+                <p class="modal__desc">We'll send you reach numbers, placement photos, and pricing within one business day.</p>
+                <form class="form" id="media-kit-form" name="media-kit" method="POST" data-netlify="true" novalidate>
+                    <input type="hidden" name="form-name" value="media-kit">
+                    <div class="form__row">
+                        <div class="form__group" data-required>
+                            <label class="form__label" for="mk-brand">Brand / Company</label>
+                            <input type="text" id="mk-brand" name="brand" class="form__input" placeholder="Your brand name" required>
+                            <span class="form__error">Please enter your brand name</span>
+                        </div>
+                        <div class="form__group" data-required>
+                            <label class="form__label" for="mk-name">Contact Name</label>
+                            <input type="text" id="mk-name" name="name" class="form__input" placeholder="Your full name" required>
+                            <span class="form__error">Please enter your name</span>
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <div class="form__group" data-required>
+                            <label class="form__label" for="mk-email">Email</label>
+                            <input type="email" id="mk-email" name="email" class="form__input" placeholder="you@company.com" required>
+                            <span class="form__error">Please enter a valid email</span>
+                        </div>
+                        <div class="form__group">
+                            <label class="form__label" for="mk-phone">Phone <span style="font-weight:400;opacity:0.6">(optional)</span></label>
+                            <input type="tel" id="mk-phone" name="phone" class="form__input" placeholder="+91 98765 43210">
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <label class="form__label" for="mk-budget">Budget Range</label>
+                        <select id="mk-budget" name="budget" class="form__input form__select">
+                            <option value="" disabled selected>Select a range</option>
+                            <option value="under-5L">Under ₹5 Lakh</option>
+                            <option value="5-15L">₹5 – 15 Lakh</option>
+                            <option value="15L+">₹15 Lakh+</option>
+                            <option value="not-sure">Not sure yet</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">
+                        Send my request
+                        <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
 
 
         <!-- Team -->
@@ -243,7 +386,7 @@
                     <div class="team-card motion-fade-up">
                         <img src="img/Ajeet Pratap Singh.jpeg" alt="Ajeet Pratap Singh" class="team-card__avatar">
                         <h4 class="team-card__name">Ajeet Pratap Singh</h4>
-                        <p class="team-card__role">Founder &amp; CEO</p>
+                        <p class="team-card__role">Founder</p>
                         <p class="team-card__bio">Architects Molivor's products end-to-end, from system design to shipped code.</p>
                     </div>
                     <div class="team-card motion-fade-up">

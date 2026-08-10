@@ -366,7 +366,101 @@
     initNewsletter();
     initActiveNav();
     initPreloader();
+    initMediaKitModal();
     // Removed: initAmbientOrbs(), initCursorGlow()
+  }
+
+  // --- Media Kit Modal ---
+  function initMediaKitModal() {
+    var modal   = document.getElementById('media-kit-modal');
+    var cta     = document.getElementById('campus-ad-cta');
+    var closeBtn= document.getElementById('modal-close');
+    var overlay = document.getElementById('modal-overlay');
+    var form    = document.getElementById('media-kit-form');
+    if (!modal || !cta) return;
+
+    function openModal() {
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      var firstInput = modal.querySelector('input, select, button');
+      if (firstInput) setTimeout(function() { firstInput.focus(); }, 50);
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      if (cta) cta.focus();
+    }
+
+    cta.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (overlay)  overlay.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    // Form submission
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var valid = true;
+
+      form.querySelectorAll('.form__group[data-required]').forEach(function(group) {
+        var input = group.querySelector('.form__input');
+        group.classList.remove('form__group--error');
+        if (!input || !input.value.trim()) {
+          group.classList.add('form__group--error');
+          valid = false;
+        }
+        if (input && input.type === 'email' && input.value.trim()) {
+          var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(input.value.trim())) {
+            group.classList.add('form__group--error');
+            valid = false;
+          }
+        }
+      });
+
+      if (!valid) return;
+
+      var submitBtn = form.querySelector('[type="submit"]');
+      var originalHTML = submitBtn.innerHTML;
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+
+      var payload = new URLSearchParams(new FormData(form)).toString();
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: payload
+      })
+        .then(function(res) {
+          if (res.ok) {
+            submitBtn.textContent = '✓ Request sent — we\'ll be in touch!';
+            submitBtn.style.background = 'var(--success)';
+            submitBtn.style.opacity = '1';
+            form.reset();
+            setTimeout(function() {
+              submitBtn.innerHTML = originalHTML;
+              submitBtn.style.background = '';
+              submitBtn.disabled = false;
+              closeModal();
+            }, 3000);
+          } else { throw new Error(); }
+        })
+        .catch(function() {
+          submitBtn.textContent = 'Network error — try again';
+          submitBtn.style.background = 'var(--error)';
+          submitBtn.style.opacity = '1';
+          setTimeout(function() {
+            submitBtn.innerHTML = originalHTML;
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+          }, 3000);
+        });
+    });
   }
 
   if (document.readyState === 'loading') {

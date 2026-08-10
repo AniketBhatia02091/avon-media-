@@ -666,6 +666,18 @@ p { max-width: 65ch; }
   vertical-align: middle;
 }
 
+/* Highlight chip — draws attention to the 1 Lakh+ stat */
+.marquee__item--highlight {
+  background: rgba(201, 150, 58, 0.15);
+  border: 1px solid rgba(201, 150, 58, 0.35);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  opacity: 1;
+  padding: 0.25em var(--space-xl);
+  color: var(--gold);
+}
+
 /* ==========================================
    SECTION HEADERS
    ========================================== */
@@ -1610,7 +1622,300 @@ p { max-width: 65ch; }
 body[data-theme="about"]    { --gold: #b8935a; --gold-dim: #8f7244; }
 body[data-theme="services"] { --gold: #d4a03d; --gold-dim: #a87e2e; }
 body[data-theme="team"]     { --gold: #c49050; --gold-dim: #9a7040; }
-/* hero = default :root values, no override needed */
+body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
+
+/* ==========================================
+   ADVERTISE ON CAMPUS
+   ========================================== */
+.campus-ad {
+  background: var(--paper);
+  position: relative;
+}
+
+/* Two-column header: text left, vending machine right */
+.campus-ad__header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  margin-bottom: var(--space-3xl);
+}
+
+@media (min-width: 1024px) {
+  .campus-ad__header {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.campus-ad__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--chalk);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: var(--space-lg);
+}
+
+.campus-ad__subhead {
+  font-size: 1.0625rem;
+  color: var(--chalk);
+  line-height: 1.65;
+  margin-bottom: var(--space-lg);
+  font-weight: 500;
+}
+
+.campus-ad__body {
+  font-size: 0.9375rem;
+  color: var(--ash);
+  line-height: 1.8;
+  margin-bottom: var(--space-2xl);
+  max-width: 52ch;
+}
+
+.campus-ad__visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Crop wrapper — clips the left wordmark panel, keeps shelves + screen in frame */
+.campus-ad__img-crop {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  /* Clip the left ~28% of the image (the wordmark panel) */
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  /* Shift image left so left panel exits frame, front face is center-of-view */
+  aspect-ratio: 3 / 4;
+}
+
+.campus-ad__img {
+  width: 140%;           /* Scale up so right portion fills crop window */
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 72% center; /* Focus on shelves + touchscreen column */
+  margin-left: -30%;     /* Push left panel out of frame */
+  display: block;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.35));
+}
+
+/* "YOUR AD HERE" overlay — positioned over the touchscreen */
+.campus-ad__screen-overlay {
+  position: absolute;
+  /* Touchscreen sits roughly top-right: calibrated to the image crop */
+  top: 22%;
+  right: 4%;
+  width: 36%;
+  aspect-ratio: 3 / 4;
+  background: var(--gold);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.45),
+    0 2px 8px rgba(0,0,0,0.25);
+  /* Slight tilt so it reads as a card floating on the machine */
+  transform: rotate(-1.5deg);
+  z-index: 2;
+}
+
+.campus-ad__screen-label {
+  font-family: var(--font-heading);
+  font-size: clamp(0.6rem, 2.5vw, 0.85rem);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.06em;
+  text-align: center;
+  line-height: 1.3;
+  padding: 0 var(--space-sm);
+  text-transform: uppercase;
+}
+
+/* Stat ticker strip with SVG hatch texture behind it */
+.campus-ad__ticker-wrap {
+  position: relative;
+  margin-bottom: var(--space-3xl);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.campus-ad__hatch {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M0 8 L8 0' stroke='%23f0ebe0' stroke-width='0.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.campus-ad__ticker-wrap .marquee {
+  position: relative;
+  z-index: 1;
+  border-radius: 0;
+  background: var(--parchment);
+  border: none;
+  border-top: 1px solid var(--border-solid);
+  border-bottom: 1px solid var(--border-solid);
+}
+
+/* Campus highlight cards — 3-up row */
+.campus-ad__campuses {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+  .campus-ad__campuses {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.campus-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-xl);
+  background: var(--parchment);
+  border: 1px solid var(--border-solid);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .campus-card:hover { border-color: var(--gold); }
+}
+
+.campus-card__icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 150, 58, 0.08);
+  border-radius: var(--radius-md);
+  color: var(--gold);
+}
+
+.campus-card__icon svg { width: 20px; height: 20px; }
+
+.campus-card__name {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;   /* Up from 0.9375rem — clearly dominant */
+  font-weight: 700;
+  color: var(--chalk);
+  letter-spacing: -0.03em;
+  margin-bottom: 3px;
+}
+
+.campus-card__loc {
+  font-size: 0.8125rem;
+  color: var(--ash);
+}
+
+/* ==========================================
+   MODAL — Media Kit form
+   ========================================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+}
+
+.modal[hidden] { display: none; }
+
+.modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 9, 7, 0.8);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+.modal__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 640px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  background: var(--paper);
+  border: 1px solid var(--border-solid);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3xl);
+  animation: modalIn var(--dur-base) var(--ease-out);
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--parchment);
+  border: 1px solid var(--border-solid);
+  border-radius: var(--radius-md);
+  color: var(--ash);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .modal__close:hover { color: var(--chalk); border-color: var(--gold); }
+}
+
+.modal__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--chalk);
+  letter-spacing: -0.04em;
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.modal__desc {
+  font-size: 0.9375rem;
+  color: var(--ash);
+  margin-bottom: var(--space-2xl);
+  line-height: 1.7;
+}
+
+/* Styled select to match form__input */
+.form__select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239a9281' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-md) center;
+  background-color: var(--paper);
+  color: var(--chalk);
+  cursor: pointer;
+}
+
+.form__select option {
+  background: var(--paper);
+  color: var(--chalk);
+}
 
 /* ==========================================
    ACCESSIBILITY
