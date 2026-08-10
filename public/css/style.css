@@ -1680,36 +1680,23 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
   justify-content: center;
 }
 
-/* Crop wrapper — clips the left wordmark panel, keeps shelves + screen in frame */
-.campus-ad__img-crop {
-  position: relative;
+/* Full image — no crop */
+.campus-ad__img {
   width: 100%;
   max-width: 420px;
-  /* Clip the left ~28% of the image (the wordmark panel) */
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-  /* Shift image left so left panel exits frame, front face is center-of-view */
-  aspect-ratio: 3 / 4;
-}
-
-.campus-ad__img {
-  width: 140%;           /* Scale up so right portion fills crop window */
-  max-width: none;
-  height: 100%;
-  object-fit: cover;
-  object-position: 72% center; /* Focus on shelves + touchscreen column */
-  margin-left: -30%;     /* Push left panel out of frame */
+  height: auto;
+  object-fit: contain;
   display: block;
-  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.35));
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.45));
 }
 
-/* "YOUR AD HERE" overlay — positioned over the touchscreen */
+/* "YOUR AD HERE" overlay — positioned over touchscreen on full image */
 .campus-ad__screen-overlay {
   position: absolute;
-  /* Touchscreen sits roughly top-right: calibrated to the image crop */
-  top: 22%;
-  right: 4%;
-  width: 36%;
+  /* Full image: touchscreen is upper-right of the front panel */
+  top: 24%;
+  right: 6%;
+  width: 22%;
   aspect-ratio: 3 / 4;
   background: var(--gold);
   border-radius: var(--radius-md);
@@ -1719,14 +1706,13 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
   box-shadow:
     0 8px 24px rgba(0,0,0,0.45),
     0 2px 8px rgba(0,0,0,0.25);
-  /* Slight tilt so it reads as a card floating on the machine */
   transform: rotate(-1.5deg);
   z-index: 2;
 }
 
 .campus-ad__screen-label {
   font-family: var(--font-heading);
-  font-size: clamp(0.6rem, 2.5vw, 0.85rem);
+  font-size: clamp(0.5rem, 1.8vw, 0.75rem);
   font-weight: 700;
   color: var(--ink);
   letter-spacing: 0.06em;
