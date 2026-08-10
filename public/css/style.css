@@ -1636,7 +1636,7 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
 /* Two-column header: text left, vending machine right (centered on vertical axis) */
 .campus-ad__header {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-3xl);
   align-items: center;
   margin-bottom: var(--space-4xl);
@@ -1644,7 +1644,7 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
 
 @media (min-width: 1024px) {
   .campus-ad__header {
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: var(--space-4xl);
   }
 }
@@ -1653,6 +1653,7 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
 .campus-ad__header-text {
   position: relative;
   z-index: 1;
+  min-width: 0;
 }
 
 .campus-ad__header-text::before {
@@ -1713,16 +1714,20 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
-/* Vending machine render */
+/* Vending machine render — strictly constrained to column width */
 .campus-ad__img {
-  width: 100%;
-  max-width: 440px;
+  max-width: 100%;
+  width: auto;
+  max-height: 520px;
   height: auto;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.4));
   border-radius: var(--radius-lg);
 }
 
