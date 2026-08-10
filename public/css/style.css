@@ -1726,15 +1726,6 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
   border-radius: var(--radius-lg);
 }
 
-.campus-ad__caption {
-  font-size: 0.75rem;
-  color: var(--ash);
-  margin-top: var(--space-sm);
-  text-align: center;
-  opacity: 0.65;
-  letter-spacing: 0.02em;
-}
-
 /* Stat ticker strip with SVG hatch texture behind it */
 .campus-ad__ticker-wrap {
   position: relative;
