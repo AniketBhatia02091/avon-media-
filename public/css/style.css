@@ -1630,21 +1630,55 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
 .campus-ad {
   background: var(--paper);
   position: relative;
+  padding-top: clamp(var(--space-2xl), 5vw, var(--space-4xl));
 }
 
-/* Two-column header: text left, vending machine right */
+/* Two-column header: text left, vending machine right (centered on vertical axis) */
 .campus-ad__header {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-3xl);
   align-items: center;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-4xl);
 }
 
 @media (min-width: 1024px) {
   .campus-ad__header {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-4xl);
   }
+}
+
+/* Text column with subtle background hatch layer */
+.campus-ad__header-text {
+  position: relative;
+  z-index: 1;
+}
+
+.campus-ad__header-text::before {
+  content: '';
+  position: absolute;
+  inset: -1.5rem -1.5rem -1.5rem -1.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M0 8 L8 0' stroke='%23f0ebe0' stroke-width='0.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+  z-index: -1;
+}
+
+.campus-ad__eyebrow-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.campus-ad__trust {
+  font-size: 0.8125rem;
+  color: var(--ash);
+  letter-spacing: 0.02em;
+  opacity: 0.85;
 }
 
 .campus-ad__title {
@@ -1676,6 +1710,7 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
 .campus-ad__visual {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -1691,10 +1726,20 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
   border-radius: var(--radius-lg);
 }
 
+.campus-ad__caption {
+  font-size: 0.75rem;
+  color: var(--ash);
+  margin-top: var(--space-sm);
+  text-align: center;
+  opacity: 0.65;
+  letter-spacing: 0.02em;
+}
+
 /* Stat ticker strip with SVG hatch texture behind it */
 .campus-ad__ticker-wrap {
   position: relative;
-  margin-bottom: var(--space-3xl);
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-4xl);
   border-radius: var(--radius-md);
   overflow: hidden;
 }
