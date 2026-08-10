@@ -1680,6 +1680,13 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
   justify-content: center;
 }
 
+.campus-ad__img-wrap {
+  position: relative;
+  display: inline-block;
+  max-width: 420px;
+  width: 100%;
+}
+
 /* Full image — no crop */
 .campus-ad__img {
   width: 100%;
@@ -1690,15 +1697,15 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
   filter: drop-shadow(0 24px 48px rgba(0,0,0,0.45));
 }
 
-/* "YOUR AD HERE" overlay — styled as an embedded digital signage screen */
+/* "YOUR AD HERE" overlay — styled as an embedded digital signage screen mounted on side panel */
 .campus-ad__screen-overlay {
   position: absolute;
-  /* Full image: touchscreen is upper-right of the front panel */
-  top: 24%;
-  right: 6%;
-  width: 22%;
-  aspect-ratio: 3 / 4;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 42%, transparent 42.5%), var(--gold);
+  /* Side panel branding position */
+  top: 20.5%;
+  left: 14%;
+  width: 23%;
+  aspect-ratio: 3 / 4.2;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.06) 42%, transparent 42.5%), var(--gold);
   border: 5px solid #f4f0ea;
   border-radius: 8px;
   box-sizing: border-box;
@@ -1706,11 +1713,11 @@ body[data-theme="campus"]   { --gold: #c9963a; --gold-dim: #9c7228; }
   align-items: center;
   justify-content: center;
   box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.5),
+    0 12px 28px rgba(0, 0, 0, 0.5),
     0 4px 10px rgba(0, 0, 0, 0.3),
     inset 0 1px 2px rgba(255, 255, 255, 0.4),
     inset 0 -1px 2px rgba(0, 0, 0, 0.2);
-  transform: rotate(-1.5deg);
+  transform: skewY(6.5deg);
   z-index: 2;
   overflow: hidden;
 }
