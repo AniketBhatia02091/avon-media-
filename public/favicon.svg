@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#0c0c1d"/>
-  <text x="4" y="25" font-family="Arial,sans-serif" font-weight="700" font-size="22" fill="#f1f5f9">A</text>
-  <circle cx="26" cy="24" r="3" fill="#6366f1"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="7" fill="#151410"/>
+  <!-- M path -->
+  <path d="M6 23V9h3.6l4.4 9.2L18.4 9H22v14h-3.2v-9.6L14.7 21h-1.4L9.2 13.4V23H6z" fill="#f0ebe0"/>
+  <!-- Amber-gold dot -->
+  <circle cx="25.5" cy="21.5" r="2" fill="#c9963a"/>
 </svg>
